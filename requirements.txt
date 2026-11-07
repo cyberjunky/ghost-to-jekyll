@@ -1,4 +1,4 @@
-requests>=2.31
+requests>=2.34.2
 PyJWT>=2.8
 markdownify>=0.11
 PyYAML>=6.0
