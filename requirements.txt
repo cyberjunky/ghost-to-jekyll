@@ -1,5 +1,5 @@
 requests>=2.31
 PyJWT>=2.8
 markdownify>=0.11
-PyYAML>=6.0
+PyYAML>=6.0.3
 python-dotenv>=1.0
