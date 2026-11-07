@@ -1,0 +1,70 @@
+# Jekyll configuration for GitHub Pages
+# ---------------------------------------------------------------------------
+# Edit title/description/url to match your blog, then commit.
+title: My Blog
+description: Posts migrated from Ghost
+author: Your Name
+
+# IMPORTANT for GitHub Pages:
+#   - User/org site (you.github.io):     leave baseurl empty, set url to https://you.github.io
+#   - Project site (you.github.io/repo): set baseurl to "/repo"
+url: "https://you.github.io"
+baseurl: ""
+
+# Nav order matches the screenshot design. home-assistant.md is a tag archive.
+header_pages:
+  - _pages/home-assistant.md
+  - _pages/knx.md
+  - _pages/solar-power.md
+  - _pages/about.md
+  - _pages/github.md
+  - _pages/tags.md
+
+# Show post excerpts on the home page list.
+show_excerpts: true
+
+# Posts wrap their body in {% raw %}...{% endraw %}. The default excerpt
+# separator ("\n\n") would slice an excerpt that opens {% raw %} without closing
+# it, breaking the build. Using a token that never appears makes auto-excerpts
+# fall back to the whole (balanced) body. Posts with an explicit front-matter
+# excerpt are unaffected.
+excerpt_separator: "<!--page-break-never-->"
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
+
+# Pretty post URLs: /<slug>/ (slug comes from the post filename).
+permalink: /:slug/
+
+# Pull the static pages produced by the converter into the build.
+include:
+  - _pages
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: "_pages"
+    values:
+      layout: page
+
+paginate: 9
+paginate_path: "/page:num/"
+
+exclude:
+  - ghost_to_jekyll.py
+  - requirements.txt
+  - README.md
+  - .env
+  - .env.example
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - tools
+  - _toolkit
