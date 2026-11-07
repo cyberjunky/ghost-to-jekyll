@@ -8,11 +8,13 @@
 
 # Ghost to Jekyll
 
+## About
+
 Converts a Ghost blog — posts, pages, tags, authors, and all images — into a
 static [Jekyll](https://jekyllrb.com/) site that a GitHub Actions workflow builds
 and deploys to GitHub Pages on every push.
 
-## What you get
+### What you get
 
 ```
 _posts/YYYY-MM-DD-<slug>.md   published posts (Markdown + YAML front matter)
@@ -24,22 +26,7 @@ _data/tags.yml                tag metadata
 _config.yml, Gemfile, index.html, .gitignore   Jekyll scaffold
 ```
 
-## 1. Get a Ghost Admin API key
-
-In Ghost Admin: **Settings → Integrations → Add custom integration**. Copy the
-**Admin API Key** — it looks like `651a...:9f8c...` (`<id>:<hex-secret>`).
-
-## 2. Configure credentials
-
-```bash
-cp .env.example .env
-# edit .env and set GHOST_API_URL and GHOST_ADMIN_API_KEY
-```
-
-The script reads these from `.env` (or your shell environment). `.env` is
-git-ignored, so the secret never gets committed.
-
-## 3. Run the converter
+## Installation
 
 ```bash
 python -m venv .venv
@@ -49,12 +36,35 @@ python -m venv .venv
 # source .venv/bin/activate
 
 pip install -r requirements.txt
+```
 
+## Configuration
+
+### Get a Ghost Admin API key
+
+In Ghost Admin: **Settings → Integrations → Add custom integration**. Copy the
+**Admin API Key** — it looks like `651a...:9f8c...` (`<id>:<hex-secret>`).
+
+### Configure credentials
+
+```bash
+cp .env.example .env
+# edit .env and set GHOST_API_URL and GHOST_ADMIN_API_KEY
+```
+
+The script reads these from `.env` (or your shell environment). `.env` is
+git-ignored, so the secret never gets committed.
+
+## Usage
+
+### Run the converter
+
+```bash
 python ghost_to_jekyll.py            # writes into the current directory
 python ghost_to_jekyll.py --dry-run  # fetch + report counts, write nothing
 ```
 
-## 4. Preview locally (optional)
+### Preview locally (optional)
 
 ```bash
 bundle install
@@ -62,7 +72,7 @@ bundle exec jekyll serve
 # open http://localhost:4000
 ```
 
-## 5. Publish to GitHub Pages
+### Publish to GitHub Pages
 
 ```bash
 git init
